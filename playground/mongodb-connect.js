@@ -1,5 +1,5 @@
 //const MongoClient=require('mongodb').MongoClient
-const {MongoClient,ObjectId}=require('mongodb');
+const {MongoClient,ObjectID}=require('mongodb');
 MongoClient.connect('mongodb://localhost:27017',{ useNewUrlParser: true},(err,client)=>{
     if(err){
         return console.log("unable to connect to thae database");
@@ -27,6 +27,20 @@ MongoClient.connect('mongodb://localhost:27017',{ useNewUrlParser: true},(err,cl
 // }
 // console.log(result.ops);
 // })
+db.collection('users').deleteOne({name:'suman'}).then((result)=>{
+    console.log(result);
+})
+db.collection('Todos').deleteMany({name:'Ridam'}).then((result)=>{
+    console.log(result);
+})
+db.collection('users').deleteMany({name:'Ridam'}).then((result)=>{
+   console.log(result);
+})
+db.collection('users').findOneAndDelete({
+    _id: new ObjectID("5b658574145bccbc2f28229b")
+}).then((result)=>{
+    console.log(result);
+})
 db.collection('users').find({
 name:'Ridam'}).toArray().then((res)=>{
    
